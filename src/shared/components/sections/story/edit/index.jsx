@@ -1,8 +1,6 @@
 /* eslint max-len: [2, 500, 4] */
 import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
-import LinearProgress from 'material-ui/LinearProgress';
-import _ from 'lodash';
 
 import StoryForm from '../form';
 import StoryContainer from '../../../../containers/story';
@@ -34,7 +32,7 @@ class StoryEdit extends Component {
 
   render() {
     const { story, lastUpdated } = this.props;
-    return _.isEmpty(story) ? <LinearProgress mode="indeterminate" /> : (<div className="container-fluid">
+    return story && story.userId ? 'Loading' : (<div className="container-fluid">
       <StoryForm action={this.actionHandler} userId={story.userId} story={story} lastUpdated={lastUpdated} />
     </div>);
   }

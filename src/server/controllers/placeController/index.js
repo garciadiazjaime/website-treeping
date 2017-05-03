@@ -1,5 +1,4 @@
 /* eslint max-len: [2, 500, 4] */
-import _ from 'lodash';
 import moment from 'moment';
 import RequestUtil from '../../../shared/utils/requestUtil';
 import LogUtil from '../../../shared/utils/logUtil';
@@ -33,7 +32,7 @@ export default class PlaceController {
         this.requestsCached = 1;
         RequestUtil.get(`${this.apiUrl}places`)
           .then((results) => {
-            if (results && _.isArray(results.entity) && results.entity.length) {
+            if (results && results.entity.length) {
               this.proxy = results.entity;
               this.lastUpdate = new Date();
             }
