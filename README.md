@@ -7,14 +7,13 @@ Run project:
 ----
 a) let's install all packages:
 
-`npm install`
-`bower install`
+`yarn`
 
 b) let's run the server
 
-`npm start`
+`npm run dev`
 
-By default server will run on http://127.0.0.1:3030/
+By default server will run on http://127.0.0.1:8080/
 
 Note: `npm run sprites` requires 'sass'
 http://sass-lang.com/install
@@ -24,10 +23,9 @@ Code to increase jslint max line length limit
 /* eslint max-len: [2, 500, 4] */
 
 Deploy project
-`npm run update`
-`git status`
-`git diff`
-`npm run deploy`
+`git checkout master`
+`git reset --hard origin/master`
+`git push upstream`
 
 Login rch
 setup -l setup email

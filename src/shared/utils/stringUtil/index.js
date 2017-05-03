@@ -61,4 +61,12 @@ export default class StringUtil {
     }
     return null;
   }
+
+  static formatDate(date, format) {
+    if (format === 'mm-dd-YYYY') {
+      const bits = date.toJSON().split('T')[0].split('-');
+      return `${bits[1]}-${bits[2]}-${bits[0]}`;
+    }
+    return date;
+  }
 }

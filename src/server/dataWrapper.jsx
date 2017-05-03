@@ -1,6 +1,6 @@
-import React from 'react';
+import { Component, PropTypes } from 'react';
 
-export default class DataWrapper extends React.Component {
+export default class DataWrapper extends Component {
 
   getChildContext() {
     return {
@@ -14,12 +14,12 @@ export default class DataWrapper extends React.Component {
 }
 
 DataWrapper.propTypes = {
-  data: React.PropTypes.shape({}),
-  children: React.PropTypes.shape({}),
+  data: PropTypes.shape({}),
+  children: PropTypes.shape({}),
 };
 
 DataWrapper.childContextTypes = {
-  data: React.PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 DataWrapper.defaultProps = {
