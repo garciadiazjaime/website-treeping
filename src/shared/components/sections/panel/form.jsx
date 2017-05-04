@@ -19,8 +19,8 @@ export default class ActivityForm extends Component {
 
   constructor(args) {
     super(args);
-    const { userId, story } = this.props;
-    const initData = story && story.userId ? story : {
+    const { userId, panel } = this.props;
+    const initData = panel && panel.userId ? panel : {
       date: StringUtil.formatDate(new Date(), 'mm-dd-YYYY'),
       userId,
     };
@@ -32,7 +32,7 @@ export default class ActivityForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.invalidText = '*required';
-    this.entityId = story && story.userId ? story._id : userId;
+    this.entityId = panel && panel.userId ? panel._id : userId;
   }
 
   handleInputChange(event, newDate) {
@@ -122,7 +122,6 @@ export default class ActivityForm extends Component {
       </div>
       {/*
           Adjascent panels should be an ordered list of 0 to 4 panel id's. Ordered beacuse each of these panles will be assigned to a navigational position (top, right, bottom, left).
-
           On author mode, each panel will have up to 4 create-panel-buttons (for each postion), triggering this button should assign the new panel su it's position on the current panel, and the opposite position in the new panel (Ex: if I create new-panel to the right of current-panel; current-panel's right position will have the id for new-panel and new-panel's left postion will have the id of current-panel. Also new-panel will only have 3 create-panel buttons as one of it's positions will be occupied by the old current-panel).
       */}
       <button className="btn btn-primary" onTouchTap={this.handleSubmit}>Save</button>
@@ -134,13 +133,13 @@ export default class ActivityForm extends Component {
 
 ActivityForm.propTypes = {
   isProcessing: PropTypes.bool,
-  story: PropTypes.shape({}),
+  panel: PropTypes.shape({}),
   action: PropTypes.func.isRequired,
   userId: PropTypes.string,
 };
 
 ActivityForm.defaultProps = {
   isProcessing: null,
-  story: {},
+  panel: {},
   userId: null,
 };

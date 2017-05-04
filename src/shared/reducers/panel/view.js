@@ -1,21 +1,21 @@
-import { REQUEST_STORIES, RECEIVE_STORIES } from '../../actions/story/list';
+import { REQUEST_PANELS, RECEIVE_PANELS } from '../../actions/panel/view';
 
-function story(state = {
+function panel(state = {
   isFetching: false,
   didInvalidate: false,
   data: [],
 }, action) {
   switch (action.type) {
-    case REQUEST_STORIES:
+    case REQUEST_PANELS:
       return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false,
       });
-    case RECEIVE_STORIES:
+    case RECEIVE_PANELS:
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
-        data: action.stories,
+        data: action.panels,
         lastUpdated: action.receivedAt,
       });
     default:
@@ -25,12 +25,12 @@ function story(state = {
 
 export const TEST = 'TEST';
 
-export function storiesByUser(state = { }, action) {
+export function panelsByUser(state = { }, action) {
   switch (action.type) {
-    case REQUEST_STORIES:
-    case RECEIVE_STORIES:
+    case REQUEST_PANELS:
+    case RECEIVE_PANELS:
       return Object.assign({}, state, {
-        [action.userId]: story(state[action.userId], action),
+        [action.userId]: panel(state[action.userId], action),
       });
     default:
       return state;
