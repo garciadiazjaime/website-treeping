@@ -11,7 +11,7 @@
     "build-fe": "./node_modules/.bin/webpack",
     "build-be": "./node_modules/.bin/webpack",
     "start": "node --use_strict start.js",
-    "clean": "rm ./static/css/screen.css && rm ./static/js/app.js && rm ./dist/server.js",
+    "clean": "rm ./static/css/screen.css && rm ./static/js/app.j≤≤≤s && rm ./dist/server.js",
     "sprites": "./node_modules/.bin/gulp build:sprites",
     "lint": "./node_modules/.bin/eslint --ignore-pattern **/app-*.js, **/**/sprite.js --ext .js,.jsx src",
     "assets": "cp -rf ./build/. ./static/ && rm ./static/index.html",
@@ -31,12 +31,6 @@
     "convict": "^2.0.0",
     "express": "^4.14.0",
     "jade": "^1.11.0",
-<<<<<<< HEAD
-=======
-    "lodash": "^4.16.6",
-    "material-ui": "^0.17.2",
-    "material-ui-upload": "^1.0.0",
->>>>>>> defined create story form input values
     "moment": "^2.18.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
