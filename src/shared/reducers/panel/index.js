@@ -1,29 +1,29 @@
-import { SAVING_STORY, STORY_SAVED, REQUEST_STORY, RECEIVE_STORY } from '../../actions/story';
+import { SAVING_PANEL, PANEL_SAVED, REQUEST_PANEL, RECEIVE_PANEL } from '../../actions/panel';
 
 
-function story(state = {
+function panel(state = {
   isProcessing: false,
   didInvalidate: false,
   data: {},
 }, action) {
   switch (action.type) {
-    case REQUEST_STORY:
+    case REQUEST_PANEL:
       return Object.assign({}, state, {
         isProcessing: true,
         didInvalidate: false,
       });
-    case RECEIVE_STORY:
+    case RECEIVE_PANEL:
       return Object.assign({}, state, {
         isProcessing: false,
         didInvalidate: false,
-        data: action.story,
+        data: action.panel,
       });
-    case SAVING_STORY:
+    case SAVING_PANEL:
       return Object.assign({}, state, {
         isProcessing: true,
         didInvalidate: false,
       });
-    case STORY_SAVED:
+    case PANEL_SAVED:
       return Object.assign({}, state, {
         isProcessing: false,
         didInvalidate: false,
@@ -36,13 +36,13 @@ function story(state = {
 
 export const TEST = 'TEST';
 
-export function storyHelper(state = { }, action) {
+export function panelHelper(state = { }, action) {
   switch (action.type) {
-    case REQUEST_STORY:
-    case RECEIVE_STORY:
-    case SAVING_STORY:
-    case STORY_SAVED:
-      return story(state.story, action);
+    case REQUEST_PANEL:
+    case RECEIVE_PANEL:
+    case SAVING_PANEL:
+    case PANEL_SAVED:
+      return panel(state.panel, action);
     default:
       return state;
   }

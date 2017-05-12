@@ -17,7 +17,7 @@ export default class DashBoard extends React.Component {
     return (<div className={`container ${style.blockWrapper}`}>
       <div className="row">
         <div className="col-sm-4">
-          <Link to="/story/add" className="btn btn-default">Story</Link>
+          <Link to="/panel/add" className="btn btn-default">Panel</Link>
         </div>
       </div>
     </div>);

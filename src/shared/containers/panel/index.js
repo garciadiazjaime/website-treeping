@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
-  const { storyHelper } = state;
+  const { panelHelper } = state;
   const {
     isProcessing,
     lastUpdated,
     groupId,
-    data: story,
-  } = storyHelper || {
+    data: panel,
+  } = panelHelper || {
     isProcessing: true,
     data: {},
   };
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
   return {
     isProcessing,
     lastUpdated,
-    story,
+    panel,
     groupId,
   };
 };

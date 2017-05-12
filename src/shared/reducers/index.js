@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import { storyHelper } from './story';
-import { storiesByUser } from './story/list';
+import { panelHelper } from './panel';
+import { panelsByUser } from './panel/view';
 
 const rootReducer = combineReducers({
-  storyHelper,
-  storiesByUser,
+  panelHelper,
+  panelsByUser,
 });
 
 export default rootReducer;

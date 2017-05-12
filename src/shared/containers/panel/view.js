@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
-  const { selectedUser, storiesByUser } = state;
+  const { selectedUser, panelsByUser } = state;
   const {
     isFetching,
     lastUpdated,
-    data: stories,
-  } = storiesByUser[selectedUser] || {
+    data: panels,
+  } = panelsByUser[selectedUser] || {
     isFetching: true,
     data: [],
   };
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
     selectedUser,
     isFetching,
     lastUpdated,
-    stories,
+    panels,
   };
 };
 

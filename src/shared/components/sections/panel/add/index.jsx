@@ -2,9 +2,9 @@
 import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 
-import StoryForm from '../form';
-import StoryContainer from '../../../../containers/story';
-import { saveStory } from '../../../../actions/story';
+import PanelForm from '../form';
+import PanelContainer from '../../../../containers/panel';
+import { savePanel } from '../../../../actions/panel';
 
 class AcitivityAdd extends Component {
 
@@ -16,19 +16,19 @@ class AcitivityAdd extends Component {
   componentWillReceiveProps(nextProps) {
     const { userId, lastUpdated } = nextProps;
     if (lastUpdated) {
-      browserHistory.push(`/user/${userId}/story?success`);
+      browserHistory.push(`/user/${userId}/panel?success`);
     }
   }
 
   actionHandler(userId, data) {
     const { dispatch } = this.props;
-    dispatch(saveStory(userId, data));
+    dispatch(savePanel(userId, data));
   }
 
   render() {
     const { params } = this.props;
     return (<div className="container-fluid">
-      <StoryForm action={this.actionHandler} userId={params.userId} />
+      <PanelForm action={this.actionHandler} userId={params.userId} />
     </div>);
   }
 }
@@ -45,4 +45,4 @@ AcitivityAdd.defaultProps = {
   userId: null,
 };
 
-export default StoryContainer(AcitivityAdd);
+export default PanelContainer(AcitivityAdd);
