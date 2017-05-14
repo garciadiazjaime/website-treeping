@@ -1,5 +1,6 @@
 /* eslint max-len: [2, 500, 4] */
 /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
+
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 // import { getPanels } from '../../../../actions/panel/view';
