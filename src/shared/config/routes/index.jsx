@@ -18,7 +18,7 @@ export default(
       <Route path="panel">
         <IndexRoute component={PanelViewSection} />
         <Route path="add" component={PanelAddSection} />
-        <Route path=":panelId/edit" component={PanelEditSection} />
+        <Route path="edit" component={PanelEditSection} />
         <Route path="view" component={PanelViewSection} />
       </Route>
     </Route>

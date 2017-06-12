@@ -1,45 +1,12 @@
-// **************************************
-// ************* MIXINS *****************
-// **************************************
-
-// generic transform
-@mixin transform($transforms) {
-	   -moz-transform: $transforms;
-	     -o-transform: $transforms;
-	    -ms-transform: $transforms;
-	-webkit-transform: $transforms;
-          transform: $transforms;
-}
-// rotate
-@mixin rotate ($deg) {
-  @include transform(rotate(#{$deg}deg));
-}
-
-// scale
-@mixin scale($scale) {
-	 @include transform(scale($scale));
-}
-// translate
-@mixin translate ($x, $y) {
-   @include transform(translate($x, $y));
-}
-// skew
-@mixin skew ($x, $y) {
-   @include transform(skew(#{$x}deg, #{$y}deg));
-}
-//transform origin
-@mixin transform-origin ($origin) {
-    moz-transform-origin: $origin;
-	     -o-transform-origin: $origin;
-	    -ms-transform-origin: $origin;
-	-webkit-transform-origin: $origin;
-          transform-origin: $origin;
-}
+@import '../../../../theme/constants';
 
 .creatorToolContainer {
   position: absolute;
+  background: $white;
+  border-radius: 5px;
   top: 8px;
   right: 8px;
+  padding: 4px 4px 0 0;
 
   .creatorTool {
     width: 20px;
@@ -54,7 +21,7 @@
   // ***** ICONS http://cssicon.space *****
   // **************************************
   .deleteIcon {
-    color: #000;
+    color: $black;
     position: absolute;
     margin-left: 5px;
     margin-top: 7px;
@@ -72,7 +39,7 @@
     position: absolute;
     left: -4px;
     top: -2px;
-    width: 17px;
+    width: 15px;
     height: 1px;
     background-color: currentColor;
   }
@@ -80,9 +47,9 @@
   .deleteIcon:after {
     content: '';
     position: absolute;
-    left: 0px;
-    top: -5px;
-    width: 7px;
+    left: -1px;
+    top: -4px;
+    width: 9px;
     height: 2px;
     border-left: solid 1px currentColor;
     border-right: solid 1px currentColor;
@@ -92,7 +59,7 @@
   }
 
   .editIcon {
-    color: #000;
+    color: $black;
     position: absolute;
     margin-left: 4px;
     margin-top: 7px;
@@ -123,7 +90,7 @@
 // **************************************
 
 .comicContainer {
-  background: #696969;
+  background: $background;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -132,7 +99,7 @@
 }
 
 .panel{
-  background: white;
+  background: $white;
   border: 1px solid black;
   color: black;
   min-width: 100px;
@@ -191,4 +158,13 @@
     top: 50%;
     @include translate(0, -50%);
   }
+}
+
+.editFormContainer {
+  background: $white;
+  padding: 16px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
 }
