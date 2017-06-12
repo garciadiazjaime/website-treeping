@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 // import { getPanels } from '../../../../actions/panel/view';
 import PanelViewContainer from '../../../../containers/panel/view';
-import PanelForm from '../form';
 
 const style = require('./style.scss');
 
@@ -41,9 +40,6 @@ class PanelView extends Component {
           <Link to="/panel/delete" className={style.creatorTool}>
             <span className={style.deleteIcon} />
           </Link>
-        </div>
-        <div className={style.editFormContainer} >
-          <PanelForm />
         </div>
       </div>
     </div>);

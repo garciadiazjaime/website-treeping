@@ -159,12 +159,3 @@
     @include translate(0, -50%);
   }
 }
-
-.editFormContainer {
-  background: $white;
-  padding: 16px;
-  border-radius: 5px;
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-}
