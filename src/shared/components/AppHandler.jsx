@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import GaUtil from '../utils/gaUtil';
-import Menu from './layout/menu/menu1';
 
 injectTapEventPlugin();
 
@@ -28,7 +27,6 @@ export default class AppHandler extends Component {
 
   render() {
     return (<div>
-      <Menu />
       {this.getChildren()}
     </div>);
   }

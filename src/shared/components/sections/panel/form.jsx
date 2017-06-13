@@ -67,7 +67,7 @@ export default class ActivityForm extends Component {
     const { isProcessing } = this.props;
     const { data, valid, touch } = this.state;
 
-    return (<div className="container">
+    return (<div className="">
       <Link to="/" className="pull-right"><span className="glyphicon glyphicon-remove" /></Link>
       <br />
       <div className="form-group">
