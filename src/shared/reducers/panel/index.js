@@ -4,6 +4,7 @@ import { SAVING_PANEL, PANEL_SAVED, REQUEST_PANEL, RECEIVE_PANEL } from '../../a
 function panel(state = {
   isProcessing: false,
   didInvalidate: false,
+  entitySaved: false,
   data: {},
 }, action) {
   switch (action.type) {
@@ -28,6 +29,7 @@ function panel(state = {
         isProcessing: false,
         didInvalidate: false,
         lastUpdated: action.receivedAt,
+        entitySaved: true,
       });
     default:
       return state;

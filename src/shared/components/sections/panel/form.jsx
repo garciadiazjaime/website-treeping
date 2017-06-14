@@ -1,18 +1,14 @@
-/* eslint max-len: [2, 10000, 4] */
-/* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
 import React, { Component, PropTypes } from 'react';
+import _ from 'lodash';
 import { Link } from 'react-router';
-import StringUtil from '../../../utils/stringUtil';
+import FormData from 'form-data';
 
 export default class ActivityForm extends Component {
 
   constructor(args) {
     super(args);
-    const { userId, panel } = this.props;
-    const initData = panel && panel.userId ? panel : {
-      date: StringUtil.formatDate(new Date(), 'mm-dd-YYYY'),
-      userId,
-    };
+    const { panel } = this.props;
+    const initData = panel || {};
     this.state = {
       data: initData,
       valid: {},
@@ -20,31 +16,52 @@ export default class ActivityForm extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleFileUpload = this.handleFileUpload.bind(this);
     this.invalidText = '*required';
-    this.entityId = panel && panel.userId ? panel._id : userId;
+    this.extensionsAllowed = ['jpg', 'jpeg', 'png', 'gif'];
   }
 
-  handleInputChange(event, newDate) {
+  handleInputChange(event) {
     const newState = Object.assign({}, this.state);
-    if (event) {
-      const { name, value } = event.target;
-      newState.data[name] = value;
-      newState.valid[name] = !!value;
-      if (!newState.touch[name]) {
-        newState.touch[name] = true;
-      }
-    } else if (newDate) {
-      newState.data.date = newDate;
+    const { name, value } = event.target;
+
+    newState.data[name] = value;
+    newState.valid[name] = !!value;
+    if (!newState.touch[name]) {
+      newState.touch[name] = true;
     }
 
     this.setState(newState);
   }
 
+  handleFileUpload() {
+    const { files } = document.getElementById('file');
+
+    if (files.length) {
+      const file = files[0];
+      const extension = file.name.split('.').pop().toLowerCase();
+      const newState = _.assign({}, this.state);
+
+      if (!newState.touch.file) {
+        newState.touch.file = true;
+      }
+      if (this.extensionsAllowed.indexOf(extension) !== -1) {
+        newState.data.file = file.name;
+        newState.valid.file = true;
+      } else {
+        newState.valid.file = false;
+      }
+
+      this.setState(newState);
+    }
+  }
+
   handleSubmit() {
     const { data } = this.state;
-    const newState = Object.assign({}, this.state);
-    const requiredFields = ['title', 'image', 'date'];
+    const newState = _.assign({}, this.state);
+    const requiredFields = ['title', 'file'];
     let isReady = true;
+
     requiredFields.map((key) => {
       if (isReady && !data[key]) {
         isReady = false;
@@ -56,10 +73,16 @@ export default class ActivityForm extends Component {
       newState.valid[key] = !!data[key];
       return null;
     });
+
     if (!isReady) {
       this.setState(newState);
     } else {
-      this.props.action(this.entityId, data);
+      const { files } = document.getElementById('file');
+      const file = files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('data', JSON.stringify(data));
+      this.props.action(formData);
     }
   }
 
@@ -74,25 +97,28 @@ export default class ActivityForm extends Component {
         <label htmlFor="title" className={!valid.title && touch.title ? 'text-danger' : null}>
             Title
         </label>
-        <input type="text" name="title" className="form-control" onChange={this.handleInputChange} value={data.name} />
+        <input
+          type="text"
+          name="title"
+          className="form-control"
+          onChange={this.handleInputChange}
+          value={data.name}
+        />
       </div>
       <div className="form-group">
         <label htmlFor="image" className={!valid.image && touch.image ? 'text-danger' : null}>
           Upload Image
         </label>
-        <input type="file" name="image" className="form-control" onChange={this.handleInputChange} />
+        <input
+          type="file"
+          id="file"
+          name="file"
+          onChange={this.handleFileUpload}
+          className="form-control"
+        />
         <span>[preview] {data.image}</span>
       </div>
-      <div className="form-group">
-        <label htmlFor="date" className={!valid.date && touch.date ? 'text-danger' : null}>
-          Date
-        </label>
-        <input type="text" name="date" className="form-control" onChange={this.handleInputChange} value={data.date} />
-      </div>
-      {/*
-          Adjascent panels should be an ordered list of 0 to 4 panel id's. Ordered beacuse each of these panles will be assigned to a navigational position (top, right, bottom, left).
-          On author mode, each panel will have up to 4 create-panel-buttons (for each postion), triggering this button should assign the new panel su it's position on the current panel, and the opposite position in the new panel (Ex: if I create new-panel to the right of current-panel; current-panel's right position will have the id for new-panel and new-panel's left postion will have the id of current-panel. Also new-panel will only have 3 create-panel buttons as one of it's positions will be occupied by the old current-panel).
-      */}
+
       <button className="btn btn-primary" onTouchTap={this.handleSubmit}>Save</button>
       <br />
       { isProcessing ? 'loading' : null }
@@ -104,11 +130,9 @@ ActivityForm.propTypes = {
   isProcessing: PropTypes.bool,
   panel: PropTypes.shape({}),
   action: PropTypes.func.isRequired,
-  userId: PropTypes.string,
 };
 
 ActivityForm.defaultProps = {
   isProcessing: null,
   panel: {},
-  userId: null,
 };
