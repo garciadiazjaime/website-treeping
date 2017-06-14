@@ -29,7 +29,7 @@ class PanelView extends Component {
       <div className={style.panel}>
         <img src="/images/the-leap.png" alt="The Leap" />
         <div className={style.panelNavTools}>
-          <Link to="/panel/top" className={style.arrowTop} />
+          <Link to="/panel/top" className={style.newPanelTop} />
           <Link to="/panel/bottom" className={style.arrowBottom} />
           <Link to="/panel/left" className={style.arrowLeft} />
           <Link to="/panel/right" className={style.arrowRight} />

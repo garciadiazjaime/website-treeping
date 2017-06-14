@@ -113,6 +113,7 @@
 .panelNavTools{
   width: 100%;
   height: 100%;
+
   .arrow {
     border-width: 10px;
     position: absolute;
@@ -127,35 +128,88 @@
     }
   }
 
-  .arrowTop {
-    @extend .arrow;
-    border-bottom-color: white;
+  .newPanel {
+    border: 1px solid $white;
+    border-radius: 2px;
+    width: 20px;
+    height: 20px;
+    color: $white;
+    position: absolute;
+    margin-left: 3px;
+    margin-top: 10px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 1px;
+      top: 8px;
+      left: 4px;
+      background-color: $white;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 1px;
+      top: 8px;
+      left: 4px;
+      background-color: $white;
+      @include rotate(90);
+    }
+  }
+
+  .posTop {
     top: -30px;
     left: 50%;
     @include translate(-50%, 0);
   }
 
-  .arrowBottom {
-    @extend .arrow;
-    border-top-color: white;
+  .posBottom {
     bottom: -30px;
     left: 50%;
     @include translate(-50%, 0);
   }
 
-  .arrowLeft {
-    @extend .arrow;
-    border-right-color: white;
+  .posLeft {
     left: -30px;
     top: 50%;
     @include translate(0, -50%);
   }
 
-  .arrowRight {
-    @extend .arrow;
-    border-left-color: white;
+  .posRight {
     right: -30px;
     top: 50%;
     @include translate(0, -50%);
+  }
+
+  .arrowTop {
+    @extend .arrow;
+    border-bottom-color: white;
+    @extend .posTop;
+  }
+
+  .arrowBottom {
+    @extend .arrow;
+    border-top-color: white;
+    @extend .posBottom;
+  }
+
+  .arrowLeft {
+    @extend .arrow;
+    border-right-color: white;
+    @extend .posLeft;
+  }
+
+  .arrowRight {
+    @extend .arrow;
+    border-left-color: white;
+    @extend .posRight;
+  }
+
+  .newPanelTop {
+    @extend .newPanel;
+    @extend .posTop;
   }
 }

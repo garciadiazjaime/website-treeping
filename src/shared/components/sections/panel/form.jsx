@@ -83,12 +83,6 @@ export default class ActivityForm extends Component {
         <input type="file" name="image" className="form-control" onChange={this.handleInputChange} />
         <span>[preview] {data.image}</span>
       </div>
-      <div className="form-group">
-        <label htmlFor="date" className={!valid.date && touch.date ? 'text-danger' : null}>
-          Date
-        </label>
-        <input type="text" name="date" className="form-control" onChange={this.handleInputChange} value={data.date} />
-      </div>
       {/*
           Adjascent panels should be an ordered list of 0 to 4 panel id's. Ordered beacuse each of these panles will be assigned to a navigational position (top, right, bottom, left).
           On author mode, each panel will have up to 4 create-panel-buttons (for each postion), triggering this button should assign the new panel su it's position on the current panel, and the opposite position in the new panel (Ex: if I create new-panel to the right of current-panel; current-panel's right position will have the id for new-panel and new-panel's left postion will have the id of current-panel. Also new-panel will only have 3 create-panel buttons as one of it's positions will be occupied by the old current-panel).
