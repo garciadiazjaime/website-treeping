@@ -4,19 +4,17 @@ const mapStateToProps = (state) => {
   const { panelHelper } = state;
   const {
     isProcessing,
-    lastUpdated,
-    groupId,
+    entitySaved,
     data: panel,
   } = panelHelper || {
-    isProcessing: true,
+    entitySaved: false,
     data: {},
   };
 
   return {
     isProcessing,
-    lastUpdated,
+    entitySaved,
     panel,
-    groupId,
   };
 };
 

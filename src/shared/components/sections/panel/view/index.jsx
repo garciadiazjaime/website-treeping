@@ -1,13 +1,8 @@
-
-/* eslint max-len: [2, 500, 4] */
-/* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
-
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-// import { getPanels } from '../../../../actions/panel/view';
 import PanelViewContainer from '../../../../containers/panel/view';
 
-const style = require('./style.scss');
+import style from './style.scss';
 
 class PanelView extends Component {
 
@@ -17,12 +12,6 @@ class PanelView extends Component {
       data: [],
     };
   }
-
-  /* componentDidMount() {
-    const { params } = this.props;
-    const { dispatch } = this.props;
-    dispatch(getPanels(params.userId));
-  }*/
 
   render() {
     return (<div className={style.comicContainer}>
@@ -46,10 +35,5 @@ class PanelView extends Component {
     </div>);
   }
 }
-
-PanelView.propTypes = {
-  /* params: PropTypes.shape({}).isRequired,
-  dispatch: PropTypes.func.isRequired,*/
-};
 
 export default PanelViewContainer(PanelView);
