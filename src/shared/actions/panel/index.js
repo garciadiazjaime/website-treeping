@@ -44,7 +44,7 @@ function getPanelHelper(panelId) {
 function savePanelHelper(data) {
   return (dispatch) => {
     dispatch(savingPanel());
-    return RequestUtil.post(`${constants.apiUrl}/panel`, data)
+    return RequestUtil.submit(`${constants.apiUrl}/panel`, data)
       .then(() => dispatch(panelSaved()));
   };
 }
@@ -58,7 +58,7 @@ function updatePanelHelper(panelId, data) {
 }
 
 function shouldProccessPanel(state) {
-  const panel = state.PanelHelper;
+  const panel = state.PanelHelper || {};
   return panel.isProcessing !== true;
 }
 

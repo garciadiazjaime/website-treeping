@@ -14,35 +14,31 @@ class AcitivityAdd extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { userId, lastUpdated } = nextProps;
-    if (lastUpdated) {
-      browserHistory.push(`/user/${userId}/panel?success`);
+    const { entitySaved } = nextProps;
+    if (entitySaved) {
+      browserHistory.push('/');
     }
   }
 
-  actionHandler(userId, data) {
+  actionHandler(data) {
     const { dispatch } = this.props;
-    dispatch(savePanel(userId, data));
+    dispatch(savePanel(data));
   }
 
   render() {
-    const { params } = this.props;
     return (<div className="container-fluid">
-      <PanelForm action={this.actionHandler} userId={params.userId} />
+      <PanelForm action={this.actionHandler} />
     </div>);
   }
 }
 
 AcitivityAdd.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  params: PropTypes.shape({}).isRequired,
-  lastUpdated: PropTypes.number,
-  userId: PropTypes.string,
+  entitySaved: PropTypes.bool,
 };
 
 AcitivityAdd.defaultProps = {
-  lastUpdated: null,
-  userId: null,
+  entitySaved: false,
 };
 
 export default PanelContainer(AcitivityAdd);
