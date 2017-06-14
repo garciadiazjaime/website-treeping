@@ -135,14 +135,16 @@
     height: 20px;
     color: $white;
     position: absolute;
-    margin-left: 3px;
-    margin-top: 10px;
+
+    &:hover {
+      background: $black;
+    }
 
     &:before {
       content: '';
       position: absolute;
       width: 10px;
-      height: 1px;
+      height: 2px;
       top: 8px;
       left: 4px;
       background-color: $white;
@@ -151,12 +153,11 @@
     &:after {
       content: '';
       position: absolute;
-      width: 10px;
-      height: 1px;
-      top: 8px;
-      left: 4px;
+      width: 2px;
+      height: 10px;
+      top: 4px;
+      left: 8px;
       background-color: $white;
-      @include rotate(90);
     }
   }
 
@@ -211,5 +212,20 @@
   .newPanelTop {
     @extend .newPanel;
     @extend .posTop;
+  }
+
+  .newPanelBottom {
+    @extend .newPanel;
+    @extend .posBottom;
+  }
+
+  .newPanelLeft {
+    @extend .newPanel;
+    @extend .posLeft;
+  }
+
+  .newPanelRight {
+    @extend .newPanel;
+    @extend .posRight;
   }
 }
