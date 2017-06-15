@@ -20,24 +20,20 @@ class PanelView extends Component {
 
   getNavPanel(dir) {
     if (dir) {
-      return [this.props.topUrl, style.arrowTop];
+      return [dir, style.arrow];
     }
-    return ['/view/add', style.newPanelTop];
+    return [this.props.addPanelUrl, style.newPanel];
   }
 
   render() {
-    const navPanelTop = this.getNavPanel(this.props.topUrl);
-    const navPanelUrlTop = navPanelTop[0];
-    const navPanelIconTop = navPanelTop[1];
-
     return (<div className={style.comicContainer}>
       <div className={style.panel}>
         <img src="/images/the-leap.png" alt="The Leap" />
         <div className={style.panelNavTools}>
-          <Link to={navPanelUrlTop} className={navPanelIconTop} />
-          <Link to={this.props.bottomUrl} className={style.arrowBottom} />
-          <Link to={this.props.leftUrl}className={style.arrowLeft} />
-          <Link to={this.props.rightUrl} className={style.arrowRight} />
+          <Link to={this.getNavPanel(this.props.topUrl)[0]} className={`${this.getNavPanel(this.props.topUrl)[1]} ${style.posTop}`} />
+          <Link to={this.getNavPanel(this.props.rightUrl)[0]} className={`${this.getNavPanel(this.props.rightUrl)[1]} ${style.posRight}`} />
+          <Link to={this.getNavPanel(this.props.bottomUrl)[0]} className={`${this.getNavPanel(this.props.bottomUrl)[1]} ${style.posBottom}`} />
+          <Link to={this.getNavPanel(this.props.leftUrl)[0]}className={`${this.getNavPanel(this.props.leftUrl)[1]} ${style.posLeft}`} />
         </div>
         <div className={style.creatorToolContainer}>
           <Link to="/panel/edit" className={style.creatorTool}>
@@ -57,13 +53,15 @@ PanelView.propTypes = {
   bottomUrl: PropTypes.string,
   leftUrl: PropTypes.string,
   rightUrl: PropTypes.string,
+  addPanelUrl: PropTypes.string,
 };
 
 PanelView.defaultProps = {
   topUrl: null,
-  bottomUrl: 'panel/add',
-  leftUrl: 'panel/add',
-  rightUrl: 'panel/add',
+  rightUrl: null,
+  bottomUrl: 'goto-bottom',
+  leftUrl: 'goto-left',
+  addPanelUrl: '/panel/add ',
 };
 
 export default PanelViewContainer(PanelView);

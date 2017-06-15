@@ -126,6 +126,22 @@
     &:hover {
       opacity: 1;
     }
+
+    &.posTop {
+      border-bottom-color: white;
+    }
+
+    &.posBottom {
+      border-top-color: white;
+    }
+
+    &.posLeft {
+      border-right-color: white;
+    }
+
+    &.posRight {
+      border-left-color: white;
+    }
   }
 
   .newPanel {
@@ -134,10 +150,11 @@
     width: 20px;
     height: 20px;
     color: $white;
+    opacity: .8;
     position: absolute;
 
     &:hover {
-      background: $black;
+      opacity: 1;
     }
 
     &:before {
@@ -183,49 +200,5 @@
     right: -30px;
     top: 50%;
     @include translate(0, -50%);
-  }
-
-  .arrowTop {
-    @extend .arrow;
-    border-bottom-color: white;
-    @extend .posTop;
-  }
-
-  .arrowBottom {
-    @extend .arrow;
-    border-top-color: white;
-    @extend .posBottom;
-  }
-
-  .arrowLeft {
-    @extend .arrow;
-    border-right-color: white;
-    @extend .posLeft;
-  }
-
-  .arrowRight {
-    @extend .arrow;
-    border-left-color: white;
-    @extend .posRight;
-  }
-
-  .newPanelTop {
-    @extend .newPanel;
-    @extend .posTop;
-  }
-
-  .newPanelBottom {
-    @extend .newPanel;
-    @extend .posBottom;
-  }
-
-  .newPanelLeft {
-    @extend .newPanel;
-    @extend .posLeft;
-  }
-
-  .newPanelRight {
-    @extend .newPanel;
-    @extend .posRight;
   }
 }
