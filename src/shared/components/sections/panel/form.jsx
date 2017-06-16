@@ -118,7 +118,6 @@ export default class ActivityForm extends Component {
         />
         <span>[preview] {data.image}</span>
       </div>
-      dd
       <button className="btn btn-primary" onTouchTap={this.handleSubmit}>Save</button>
       <br />
       { isProcessing ? 'loading' : null }
