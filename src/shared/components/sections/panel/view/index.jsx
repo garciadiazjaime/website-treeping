@@ -1,13 +1,10 @@
-
-/* eslint max-len: [2, 500, 4] */
 /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
-// import { getPanels } from '../../../../actions/panel/view';
 import PanelViewContainer from '../../../../containers/panel/view';
 
-const style = require('./style.scss');
+import style from './style.scss';
 
 class PanelView extends Component {
 
