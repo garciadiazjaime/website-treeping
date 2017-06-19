@@ -17,7 +17,7 @@ export default class navButton extends Component {
     if (url) {
       return [position, style.arrow];
     }
-    return [this.props.addPanelUrl + '_' + position, style.newPanel];
+    return [this.props.addPanelUrl + position, style.newPanel];
   }
 
   getPosition() {

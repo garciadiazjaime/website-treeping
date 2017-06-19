@@ -25,7 +25,6 @@ class PanelView extends Component {
         <NavButton url={this.props.rightUrl} position="right" />
         <NavButton url={this.props.bottomUrl} position="bottom" />
         <NavButton url={this.props.leftUrl} position="left" />
-        
         <div className={style.creatorToolContainer}>
           <Link to="/panel/edit" className={style.creatorTool}>
             <span className={style.editIcon} />
