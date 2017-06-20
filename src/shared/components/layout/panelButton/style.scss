@@ -13,19 +13,19 @@
     opacity: 1;
   }
 
-  &.posTop {
+  &.top {
     border-bottom-color: $white;
   }
 
-  &.posBottom {
+  &.bottom {
     border-top-color: $white;
   }
 
-  &.posLeft {
+  &.left {
     border-right-color: $white;
   }
 
-  &.posRight {
+  &.right {
     border-left-color: $white;
   }
 }
@@ -64,25 +64,27 @@
   }
 }
 
-.posTop {
+// Position classnames
+
+.top {
   top: -30px;
   left: 50%;
   @include translate(-50%, 0);
 }
 
-.posBottom {
+.bottom {
   bottom: -30px;
   left: 50%;
   @include translate(-50%, 0);
 }
 
-.posLeft {
+.left {
   left: -30px;
   top: 50%;
   @include translate(0, -50%);
 }
 
-.posRight {
+.right {
   right: -30px;
   top: 50%;
   @include translate(0, -50%);
