@@ -1,4 +1,3 @@
-/* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
@@ -21,10 +20,10 @@ class PanelView extends Component {
       <div className={style.panel}>
         <img src="/images/the-leap.png" alt="The Leap" />
 
-        <NavButton url={this.props.topUrl} position="top" />
-        <NavButton url={this.props.rightUrl} position="right" />
-        <NavButton url={this.props.bottomUrl} position="bottom" />
-        <NavButton url={this.props.leftUrl} position="left" />
+        <NavButton data={this.props.panel.top} />
+        <NavButton data={this.props.panel.right} />
+        <NavButton data={this.props.panel.bottom} />
+        <NavButton data={this.props.panel.left} />
         <div className={style.creatorToolContainer}>
           <Link to="/panel/edit" className={style.creatorTool}>
             <span className={style.editIcon} />
@@ -39,17 +38,33 @@ class PanelView extends Component {
 }
 
 PanelView.propTypes = {
-  topUrl: PropTypes.string,
-  bottomUrl: PropTypes.string,
-  leftUrl: PropTypes.string,
-  rightUrl: PropTypes.string,
+  panel: PropTypes.shape({
+    top: PropTypes.shape({}),
+    right: PropTypes.shape({}),
+    bottom: PropTypes.shape({}),
+    left: PropTypes.shape({}),
+  }),
 };
 
 PanelView.defaultProps = {
-  topUrl: null,
-  rightUrl: null,
-  bottomUrl: 'goto-bottom',
-  leftUrl: 'goto-left',
+  panel: {
+    top: {
+      position: 'top',
+      url: '/panel/top',
+    },
+    right: {
+      position: 'right',
+      url: null,
+    },
+    bottom: {
+      position: 'bottom',
+      url: '/panel/bottom',
+    },
+    left: {
+      position: 'left',
+      url: null,
+    },
+  },
 };
 
 export default PanelViewContainer(PanelView);
